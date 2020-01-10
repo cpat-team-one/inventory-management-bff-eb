@@ -3,6 +3,16 @@
 # Declare variables to be passed into your templates.
 global: {}
 
+serviceUrl: "inventory-management-svc-eb:80"
+
+env:
+    - name: INGRESS_HOST
+      value: {{ include "starter-kit-chart.host" . }}
+    - name: PROTOCOLS
+      value: {{ include "starter-kit-chart.protocols" . }}
+    - name: SERVICE_URL
+      value: {{ .Values.serviceUrl | quote }}
+
 replicaCount: 1
 logLevel: "debug"
 
